@@ -1,0 +1,108 @@
+header{
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, hsl(var(--blu-3)/.8), transparent);
+}
+.dropdown,
+.int-home,
+.login-btn{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    place-items: center;
+}
+.dropdown{
+    position: relative;
+    grid-template-columns: 1fr .5fr;
+    gap: 0;
+}
+.dropdown:hover{
+    color: hsl(var(--grn));
+}
+.dropdown button{
+    font-family: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+.dropdown img{
+    transition: all .1s ease-in-out;
+}
+.dropdown[aria-expanded="true"] img{
+    rotate: 180deg;
+}
+.login-btn a{
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.login-btn a:hover{
+    color: hsl(var(--grn));
+}
+.login-btn a:nth-child(2){
+    background: hsl(var(--grn));
+    color: hsl(var(--blu-3));
+    padding: .5rem 1.6rem;
+    border-radius: .25rem;
+}
+
+#topic-list{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 2rem;
+    visibility: hidden;
+    pointer-events: none;
+
+    background: hsl(var(--wit));
+    color: hsl(var(--blu-3));
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px hsl(var(--blu-2));
+    transform: translateY(-2rem);
+
+    opacity: 0%;
+    transition: all .1s ease-in-out;
+}
+#topic-list ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#topic-list li{
+    padding: .5rem 4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transform-origin: all 1s ease-in-out;
+}
+#topic-list li:hover{
+    background: hsl(var(--blu-3));
+    color: hsl(var(--grn));
+}
+#topic-list[data-visible='true']{
+    opacity: 100%;
+    visibility: visible;
+    pointer-events:all;
+    transform: translateY(0);
+}
+@media screen and (max-width: 650px){
+    header{
+        position: relative;
+    }
+    .register-btn{
+        visibility: hidden;
+    }
+    .login-btn{
+        grid-template-columns: 0 auto;
+        align-items: end;
+    }
+}
